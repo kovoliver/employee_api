@@ -10,7 +10,7 @@ class HTTP {
 
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended:true}));
-        this.app.listen(3000, ()=> console.log("app listen 3000"));
+        this.app.listen(process.env.PORT, ()=> console.log(`app is listening on port ${process.env.PORT}`));
     }
 
     get(path, cb) {
