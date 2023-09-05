@@ -6,11 +6,11 @@ USE `employees`;
 DROP TABLE IF EXISTS `employees`;
 CREATE TABLE IF NOT EXISTS `employees` (
   `EmployeeID` int NOT NULL AUTO_INCREMENT,
-  `FirstName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `LastName` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
   `Salary` int NOT NULL,
   PRIMARY KEY (`EmployeeID`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `employees` (`EmployeeID`, `FirstName`, `LastName`, `Salary`) VALUES
 (1, 'Emma', 'Watson', 900000),

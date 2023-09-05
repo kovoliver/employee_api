@@ -24,7 +24,7 @@ class Conn {
     async query(sql, values) {
         try {
             const promisePool = this.pool.promise();
-            const rows = await promisePool.query(sql, values);
+            const rows = await promisePool.query(sql, values !== undefined ? values : null);
             return rows[0];
         } catch(err) {
             throw err;
