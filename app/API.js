@@ -28,7 +28,7 @@ class API extends HTTP {
                 const employees = await this.conn.query('SELECT * FROM employees');
                 res.send(employees);
             } catch (err) {
-                res.status(503).send("Service unavailable!");
+                res.status(503).send({error:"Service unavailable!"});
             }
         });
     }
@@ -47,7 +47,7 @@ class API extends HTTP {
                 WHERE EmployeeID = ?`, [req.params.id]);
                 res.send(employees);
             } catch (err) {
-                res.status(503).send("Service unavailable!");
+                res.status(503).send({error:"Service unavailable!"});
             }
         });
     }
@@ -68,7 +68,7 @@ class API extends HTTP {
                         salary: req.body.salary
                     });
                 } else {
-                    res.status(500).send("Something went wrong!");
+                    res.status(500).send({error:"Something went wrong!"});
                 }
             } catch (err) {
                 res.status(400).send(err);
@@ -81,7 +81,7 @@ class API extends HTTP {
             const id = parseInt(req.params.id);
 
             if (isNaN(id)) {
-                res.status(400).send("The provided employeeID is incorrect!");
+                res.status(400).send({error:"The provided employeeID is incorrect!"});
                 return;
             }
 
@@ -102,7 +102,7 @@ class API extends HTTP {
                         salary: req.body.salary
                     });
                 } else {
-                    res.status(500).send("Something went wrong!");
+                    res.status(500).send({error:"Something went wrong!"});
                 }
             } catch (err) {
                 res.status(400).send(err);
