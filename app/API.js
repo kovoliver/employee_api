@@ -43,9 +43,13 @@ class API extends HTTP {
             }
 
             try {
-                const employees = await this.conn.query(`SELECT * FROM employees 
-                WHERE EmployeeID = ?`, [req.params.id]);
-                res.send(employees);
+                const employee = await this.conn.query(`SELECT * FROM employees 
+                WHERE EmployeeID = ?`, [id]);
+
+                if(employee.length > 0)
+                    res.send(employee);
+                else 
+                    res.status(404).send({error:"This employee cannot be found!"});
             } catch (err) {
                 res.status(503).send({error:"Service unavailable!"});
             }
@@ -102,7 +106,7 @@ class API extends HTTP {
                         salary: req.body.salary
                     });
                 } else {
-                    res.status(500).send({error:"Something went wrong!"});
+                    res.status(404).send({error:"This employee cannot be found!"});
                 }
             } catch (err) {
                 res.status(400).send(err);
